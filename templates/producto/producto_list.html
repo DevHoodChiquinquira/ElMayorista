@@ -1,0 +1,37 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+
+<table id="example1" class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+
+            <th>Codigo</th>
+            <th>Producto</th>
+            <th>valor Iva</th>
+            <th>valor Venta</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    	{% for pr in productos %}
+    		<tr>
+    			<td>{{pr.codigo}}</td>
+    			<td>{{pr.producto}}</td>
+    			<td>{{pr.valorIva}}</td>
+    			<td>{{pr.valorVenta}}</td>
+          <td class="bg-info" >
+            <a href="{%url 'producto:producto_detail' pr.id%}" class="fa fa-eye fa-2x"></a>
+          </td>
+          <td class="bg-warning" >
+            <a href="{%url 'producto:producto_edit' pr.id%}"  class="fa fa-pencil-square-o fa-2x"></a>
+          </td>
+    		</tr>
+    	{% endfor %}
+    </tbody>
+
+</table>
+
+{%endblock%}

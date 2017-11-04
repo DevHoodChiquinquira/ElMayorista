@@ -1,0 +1,15 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h4 class="card-title">Codigo: {{producto.codigo}}</h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Producto: {{producto.producto}}</li>
+    <li class="list-group-item">Descripción:{{producto.descripcion}} </li>
+    <li class="list-group-item">IVA: {{producto.valorIva}}</li>
+    <li class="list-group-item">Valor Venta: {{producto.valorVenta}} </li>
+  </ul>
+</div>
+{%endblock%}

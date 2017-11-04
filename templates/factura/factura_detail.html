@@ -1,0 +1,17 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+<a href="{%url 'factura:factura_list' %}"><span class="icon fa-arrow-left "></span></a>
+<h2>Factura : {{factura.serie}}</h2>
+<ul>
+
+	<li><b>Maquina: </b>{{factura.maquina}}</li>
+	<li><b>Fecha: </b>{{factura.fecha}}</li>
+	<li><b>Vendedor: </b>{{factura.vendedor}}</li>
+	<li><b>Cliente: </b>{{factura.cliente}}</li>
+	<li><b>Forma de pago: </b>{{factura.formaPago}}</li>
+	<li><b>iva: </b>{{factura.iva}}</li>
+	<li><b>Total: </b>{{factura.total}}</li>
+</ul>
+
+{%endblock%}

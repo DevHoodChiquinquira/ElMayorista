@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%load staticfiles%}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- Compatible con monbiles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.css"%}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.css"%}">
+    <link rel="icon" href="{% static "images/icono.ico" %}" >
+    <style>
+      .slider{
+        background: url({%static "images/desechables.jpg"%});
+        height: 100vh;/*abarque el 100% dispositivo*/
+        background-size: cover;
+        background-position: center;
+        background-color:gray; opacity:1;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container-fluid slider d-flex justify-content-center align-items-center" id="inicio">
+      <h5 class="display-3 text-light ">El Mayorista</h5>
+    </section>
+
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'usuario:index' %}">
+        <img src= {% static "images/logo.png" %} width="30" height="30" class="d-line-block aling-top" alt="logo romario">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div class="navbar-nav mr-auto text-center">
+          <a class="nav-item- nav-link active" href="{% url 'usuario:index' %}">Inicio</a>
+          <a class="nav-item- nav-link " href="#herramientas">algo</a>
+          <a class="nav-item- nav-link " href="#proyectos">algo</a>
+          <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-success ml-5 mr-5">Iniciar sesión</button>
+          <button type="button" class="btn btn-outline-danger  ml-5 mr-5">Cerrar Sesión</button>
+        </div>
+      </div>
+    </nav>
+
+
+    <!--Jumbroton -->
+    <div class="jumbotron jumbotron-fluid  ">
+      <div class="container">
+        <h1 class="display-4 text-center">Soy un desarrollador de software enfocado en el Backend </h1>
+        <p class="lead text-justify">Mi nombre es Rafael Romario soy una persona apasionada en el desarrollo
+          de soluciones creativas enfocadas en el software. Posee las competencias de construir complejas
+          aplicaciones para individuos y empresas siempre con el enfoque de proveer interfaces intuitivas
+          y de facil uso para que cualquier usuario pueda acceder a la informacion.
+          ¿Está buscando un sitio web de alta calidad para su organización o empresa a un precio competitivo?.</p>
+        </div>
+      </div>
+    <!--Jumbroton end -->
+
+    <!--card-->
+    <section class="container mt-2 pt-2" id="herramientas">
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top img-fluid" src={% static "images/python-logo.png" %} alt="python logo">
+          <div class="card-body">
+            <h4 class="card-title">¿Por qué usar python?</h4>
+            <p class="card-text">Python es uno de los lenguajes mas populares en la web y es usado por las mejores empresas del mundo.</p>
+            <button type="button" class="btn btn-dark">leer</button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src={% static "images/django-logo.png" %} alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">¿Django el Framework perfecto de python?</h4>
+            <p class="card-text">Django es usado por empresas como Instagram, The New York times, Nasa Science,
+                National Geographic entre otras.</p>
+            <button type="button" class="btn btn-dark">leer</button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src={% static "images/mstile-310x150.png" %}  alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">¿Qué es bootstrap?</h4>
+            <p class="card-text">Es un poderoso framework desarrollado por Twitter,
+              el cual genera una experiencia mas agradable a tus sitios wev.</p>
+            <button type="button" class="btn btn-dark">leer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Jumbroton -->
+    <div class="jumbotron jumbotron-fluid bg-dark text-white mt-5" id="proyectos">
+      <div class="container">
+        <h1 class="display-5 text-center">Estos son unos de mis proyectos recientes, me facinaria agregar el tuyo tambien. </h1>
+        </div>
+      </div>
+    <!--Jumbroton end -->
+
+    <!--card-->
+    <section class="container mt-2 pt-2">
+      <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src={% static "images/aluminios.png" %} alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">aliminiosboyacaje.com</h4>
+            <p class="card-text">Desarrollado en Bootstrap, Python Django.</p>
+          </div>
+          <div class="card-footer">
+            <button onclick="window.location.href='aluminios.html'" type="button" class="btn btn-dark">leer</button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src={% static "images/mayorista.png" %} alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">elmayorista.com</h4>
+            <p class="card-text">Desarrollado en Bootstrap, Python Django.</p>
+          </div>
+          <div class="card-footer">
+            <button  type="button" class="btn btn-dark">leer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer class="container-fluid bg-dark mt-5 pt-2">
+      <div class="row text-white py-4 text-white  text-center justify-content-center ">
+        <div class="col-md-4 ">
+          <img src= {% static "images/python-powered-w.svg" %}  alt="logo python powered" width="auto" height="40px" class="rounded mx-auto d-block">
+
+        </div>
+        <div class="col-md-4 " >
+          <a href="https://rafaelromario.com"> &copy; RafaelRomario</a>
+        </div>
+        <div class="col-md-4">
+          <h6 class="lead"> Sigueme</h6>
+          <a href="#"> <span class="fa fa-github fa-2x"></span></a>
+          <a href="#"> <span class="fa fa-twitter fa-2x"></span></a>
+          <a href="#"> <span class="fa fa-facebook fa-2x" ></span></a>
+          <a href="#"> <span class="fa fa-youtube fa-2x"></span></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS  -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="{%static "js/bootstrap.min.js"%}" crossorigin="anonymous"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>-->
+  </body>
+</html>

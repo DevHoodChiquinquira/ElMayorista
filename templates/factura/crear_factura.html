@@ -1,0 +1,203 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+
+
+<div class="form-row">
+        <div class="form-group col-md-6 ">
+          <div class="card font-weight-bold" style="width: 20rem;">
+            <div class="card-header text-center font-weight-bold">
+              CLIENTE
+            </div>
+            <ul class="list-group list-group-flush ">
+              <li class="list-group-item">Identificación: <span class="font-weight-normal" id="c-dni"></span></li>
+              <li class="list-group-item">Empresa: <span class="font-weight-normal" id="c-nombreEmpresa"></span></li>
+              <li class="list-group-item">Nombre: <span class="font-weight-normal" id="c-nombreRepresentante"></span></li>
+              <li class="list-group-item">Apellido: <span class="font-weight-normal" id="c-apellidoRepresentante"></span></li>
+            </ul>
+            <div class="card-footer text-center">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                 Cliente
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group col-md-6 ">
+          <div class="card font-weight-bold" style="width: 20rem;">
+            <div class="card-header text-center font-weight-bold">
+              FACTURA
+            </div>
+            <ul class="list-group list-group-flush ">
+              <li class="list-group-item">
+                <label for="inputAddress2">Forma de pago</label>
+                <select class="form-control" id="o-tipoPago">
+                  <option value="efectivo">Efectivo</option>
+                  <option value="cheque">Cheque</option>
+                  <option value="tarjeta débito">Tarjeta débito</option>
+                  <option value="tarjeta crédito">Tarjeta crédito</option>
+                  <option value="venta a crédito">Venta a crédito</option>
+                  <option value="bono">Bono</option>
+                  <option value="vale">Vale</option>
+                  <option value="otros">Otros</option>
+                </select>
+              </li>
+              <li class="list-group-item">Maquina
+                <input type="text" disabled=True id="f-maquinaid" value="3CR02409M9" disabled=True  required="required" class="form-control">
+              </li>
+            </ul>
+            <div class="card-footer text-center">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ProductoModal">
+                Productos
+              </button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Modal cliente -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Busqueda de Usuarios</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="GET" action="{% url 'factura:search_Cliente'%}"  id="c-buscar">
+                <div class="form-row">
+                  <div class="form-group col-md-10 ">
+                    <label for="inputAddress">Usuario</label>
+                    <input type="text" name="dni" class="form-control"  placeholder="Cliente">
+                  </div>
+                  <div class="form-group col-md-2 ">
+                    <label for="inputAddress"></label>
+                    <button type="submit"  class="btn btn-primary fa fa-search"></button>
+                  </div>
+                </form>
+            </div>
+            <div class="form-group col-md-12 " id="clientes">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" id="c-seleccionar" class="btn btn-primary">Seleccionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--fin Modal cliente-->
+<!-- producto modal-->
+<div class="modal fade" id="ProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Busqueda de Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="GET" action="{% url 'factura:search_Producto' %}"  id="p-buscar">
+          <div class="form-row">
+            <div class="form-group col-md-10 ">
+              <label for="inputAddress">Producto</label>
+              <input type="text" name="codigo" class="form-control"  placeholder="codigo producto">
+            </div>
+            <div class="form-group col-md-2 ">
+              <label for="inputAddress"></label>
+              <button type="submit"  class="btn btn-primary fa fa-search"></button>
+            </div>
+          </form>
+      </div>
+      <div class="form-group col-md-12 " id="productos">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" id="p-seleccionar" class="btn btn-primary">Seleccionar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--producto fin modal-->
+
+
+<!-- Tabla productos -->
+<center> <span class="font-weight-bold text-center" > PRODUCTOS</span><br/></center>
+<table class= "table table-striped table-responsive" id="tb-detalle">
+  <thead class="">
+    <tr class="">
+      <th scope="col">Codigo</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">IVA</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<!-- Tabla productos -->
+
+
+<!--Totales -->
+<div class="card text-center">
+  <div class="card-header">
+    <h4> TOTAL </h4>
+  </div>
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-4 ">
+        <label>Subtotal</label><br>
+        <label id='p-subtotal'>$0.0</label>
+      </div>
+      <div class="form-group col-md-4 ">
+        <label for="inputAddress2">IVA</label><br>
+        <label id='p-iva'>$0.0</label>
+      </div>
+      <div class="form-group col-md-4 ">
+        <label for="inputAddress2">Total</label><br>
+        <label id='p-total'>$0.0</label>
+      </div>
+    </div>
+
+
+    </div>
+    <div class="card-footer text-muted">
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+<!-- Totales -->
+
+
+
+
+
+<!--Enviar -->
+<form action="/factura/venta" method="post" onsubmit="onEnviar()">
+    {% csrf_token %}
+    <input id="proceso" name="proceso" type="hidden" />
+    <button class="btn btn-success pull-right" id="comprar"><i class="fa fa-credit-card"></i> Realizar Venta</button>
+</form>
+<!--Fin Enviar -->
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock%}

@@ -1,0 +1,38 @@
+{% extends "system_index.html" %}
+
+{% block system_Contable %}
+
+<table class= "table table-striped table-responsive">
+  <thead class="">
+    <tr class="">
+      <th scope="col">DNI</th>
+      <th scope="col">Empresa</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Dirección</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pr in clientes %}
+    <tr>
+      <td>{{pr.dni}}</td>
+      <td>{{pr.nombreEmpresa}}</td>
+      <td>{{pr.nombreRepresentante}}</td>
+      <td>{{pr.apellidoRepresentante}}</td>
+      <td>{{pr.telefono}}</td>
+      <td>{{pr.direccion}}</td>
+      <td class="bg-info" >
+        <a href="{% url 'cliente:cliente_detalle' pr.id %}" class="fa fa-eye fa-2x"></a>
+      </td>
+      <td class="bg-warning" >
+        <a href="{% url 'cliente:cliente_update' pr.id %}"  class="fa fa-pencil-square-o fa-2x"></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+{%endblock%}
