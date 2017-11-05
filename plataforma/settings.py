@@ -125,6 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+#requisito de heroku
+STATIC_ROOT = 'staticfiles'
 #opcional Redirecciona si no tiene permisos de LoginRequiredMixin
 LOGIN_URL = '/'
 
