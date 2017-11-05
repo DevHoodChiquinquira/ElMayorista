@@ -5,9 +5,9 @@ from .models import Factura, DetalleFactura
 @admin.register(Factura)
 class AdminFactura(admin.ModelAdmin):
 	list_display = ( 'maquina', 'fecha',
-		'vendedor', 'cliente',)
+		'vendedor', 'cliente', 'iva', 'total',)
 
 @admin.register(DetalleFactura)
 class AdminDetalleFactura(admin.ModelAdmin):
-	list_display = ('factura', 'producto', 'cantidad',
+	list_display = ('factura', 'producto', 'cantidad', 'precio',
 		'valorIva', 'subtotal',)

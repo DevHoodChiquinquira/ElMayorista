@@ -43,8 +43,6 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <div class="navbar-nav mr-auto text-center">
-          <a class="nav-item- nav-link active fa fa-home" href="sistema.html"></a>
-          <a class="nav-item- nav-link active fa fa-user-circle" href=""></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
             <div class="dropdown-menu">
@@ -58,7 +56,15 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Factura</a>
             <div class="dropdown-menu">
               <a class="dropdown-item"  href="{% url 'factura:factura_venta'%}">Crear</a>
-              <a class="dropdown-item"  href="">visualizar</a>
+              <a class="dropdown-item"  href="{% url 'factura:factura_list'%}">visualizar</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" >Cliente</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'cliente:cliente_insert' %}">Crear</a>
+              <a class="dropdown-item" href="{%url 'cliente:cliente_list'%}">Visualizar</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -68,16 +74,7 @@
               <a class="dropdown-item"  href="{%url 'producto:producto_list' %}">visualizar</a>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" >Cliente</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="{% url 'cliente:cliente_insert' %}">Crear</a>
-              <a class="dropdown-item" href="{%url 'cliente:cliente_list'%}">Visualizar</a>
-            </div>
-          </li>
-
-
-          <button type="button" onclick="window.location.href="" class="btn btn-outline-danger">Cerrar Sesión</button>
+          <button type="button" onclick="window.location.href={%url 'usuario:logout'%}" class="btn btn-outline-danger">Cerrar Sesión</button>
         </div>
       </div>
     </nav>
@@ -95,11 +92,10 @@
 
         </div>
         <div class="col-md-4 " >
-          <a href="https://rafaelromario.com"> &copy; RafaelRomario</a>
+          <a href="https://hoodeddeveloper.com.co" target="_blank"> &copy; Hooded Developer</a>
         </div>
         <div class="col-md-4">
           <h6 class="lead"> Sigueme</h6>
-          <a href="#"> <span class="fa fa-github fa-2x"></span></a>
           <a href="#"> <span class="fa fa-twitter fa-2x"></span></a>
           <a href="#"> <span class="fa fa-facebook fa-2x" ></span></a>
           <a href="#"> <span class="fa fa-youtube fa-2x"></span></a>

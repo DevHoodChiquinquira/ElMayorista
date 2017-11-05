@@ -35,7 +35,7 @@
             <ul class="list-group list-group-flush ">
               <li class="list-group-item">
                 <label for="inputAddress2">Forma de pago</label>
-                <select class="form-control" id="o-tipoPago">
+                <select class="form-control" id="f-tipoPago">
                   <option value="efectivo">Efectivo</option>
                   <option value="cheque">Cheque</option>
                   <option value="tarjeta débito">Tarjeta débito</option>
@@ -169,10 +169,9 @@
       </div>
     </div>
 
-
     </div>
     <div class="card-footer text-muted">
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-primary">calcular</a>
     </div>
   </div>
 <!-- Totales -->
@@ -190,14 +189,13 @@
 <!--Fin Enviar -->
 
 
-
-
-
-
-
-
-
-
-
+{% if user.is_authenticated %}
+    {% if messages %}{% for message in messages %}
+      <div class="alert alert-danger alert-dismissable">
+      <i class="fa fa-info"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>Alert!</b> {{ message }}
+      </div>
+  {% endfor %}{% endif %}{% endif %}
 
 {%endblock%}

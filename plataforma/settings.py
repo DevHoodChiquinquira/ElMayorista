@@ -138,9 +138,9 @@ STATICFILES_DIRS= [os.path.join(BASE_DIR,'static')]
 #MEDIA_ROOT= 'imagenes'
 
 #MEDIA_URL = '/templates/imagenes/'
-MEDIA_ROOT= 'images'
+MEDIA_ROOT= 'media'
 
-MEDIA_URL = '/images/'
+MEDIA_URL = '/media/'
 
 
 # Update database configuration with $DATABASE_URL.

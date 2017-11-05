@@ -30,7 +30,7 @@
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'usuario:index' %}">
-        <img src= {% static "images/logo.png" %} width="30" height="30" class="d-line-block aling-top" alt="logo romario">
+        <img src= {% static "images/logo.png" %} width="30" height="30" class="d-line-block aling-top" alt="logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,11 +38,27 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <div class="navbar-nav mr-auto text-center">
-          <a class="nav-item- nav-link active" href="{% url 'usuario:index' %}">Inicio</a>
-          <a class="nav-item- nav-link " href="#herramientas">algo</a>
-          <a class="nav-item- nav-link " href="#proyectos">algo</a>
-          <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-success ml-5 mr-5">Iniciar sesión</button>
-          <button type="button" class="btn btn-outline-danger  ml-5 mr-5">Cerrar Sesión</button>
+
+
+          <a class="nav-item- nav-link active" href="{% url 'usuario:index' %}">¿Quienes somos?</a>
+
+          <a class="nav-item- nav-link " href="#proyectos">Productos</a>
+
+          <a class="nav-item- nav-link " href="#proyectos">Contactanos</a>
+
+
+          {% if user.is_authenticated %}
+
+            <a class="nav-item- nav-link fa fa-user-circle fa-2x p-3 mb-2 bg-light text-dark mr-5 ml-5" href="{% url 'usuario:system_index' %}"></a>
+
+            <button type="button" onclick="window.location.href={%url 'usuario:logout'%}" class="btn btn-outline-danger mr-5 ml-5">Cerrar Sesión</button>
+
+          {% else %}
+            <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-success mr-5 ml-5">Iniciar sesión</button>
+          {%endif%}
+
+
+            </div>
         </div>
       </div>
     </nav>
@@ -135,11 +151,10 @@
 
         </div>
         <div class="col-md-4 " >
-          <a href="https://rafaelromario.com"> &copy; RafaelRomario</a>
+          <a href="https://hoodeddeveloper.com.co" target="_blank"> &copy; Hooded Developer</a>
         </div>
         <div class="col-md-4">
           <h6 class="lead"> Sigueme</h6>
-          <a href="#"> <span class="fa fa-github fa-2x"></span></a>
           <a href="#"> <span class="fa fa-twitter fa-2x"></span></a>
           <a href="#"> <span class="fa fa-facebook fa-2x" ></span></a>
           <a href="#"> <span class="fa fa-youtube fa-2x"></span></a>

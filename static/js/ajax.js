@@ -63,10 +63,10 @@ $("#c-seleccionar").click(function(){
   $("#c-nombreEmpresa").text(cliente.nombreEmpresa);
   $("#c-nombreRepresentante").text(cliente.nombreRepresentante);
   $("#c-apellidoRepresentante").text(cliente.apellidoRepresentante);
-  //var tipoPago = $("#f-tipoPago").val();
-  //var idMaquina = $("#f-maquinaid").val();
-  //proceso.tipoPago = tipoPago;
-  //proceso.idMaquina = idMaquina;
+  // var tipoPago = $("#f-tipoPago").val();
+  // var idMaquina = $("#f-maquinaid").val();
+  // proceso.tipoPago = tipoPago;
+  // proceso.idMaquina = idMaquina;
   //alert(texto);
   //alert(textot);
 })
@@ -84,7 +84,7 @@ $('#p-buscar').submit(function(e){
       var html = ""
       for (var i = 0; i < json.length; i++) {
         html += 'Codigo: '+json[i].fields.codigo + '<br>';
-        html += 'elemento: '+json[i].fields.producto + '<br>';
+        html += 'Producto: '+json[i].fields.producto + '<br>';
         html += 'IVA: '+json[i].fields.valorIva + '<br>';
         html += 'valor Venta: '+json[i].fields.valorVenta + '<br>';
         html += '<label> Valor venta </label> <input name="p-valorVenta" id="p-valorVenta" type="number" min="1" max="50000000" step="500" value=0 autocomplete="off" required="required"><br>';
@@ -147,6 +147,7 @@ function onEnviar(){
     var idMaquina = $("#f-maquinaid").val();
     proceso.tipoPago = tipoPago;
     proceso.idMaquina = idMaquina;
+
     console.log(JSON.stringify(proceso));
     document.getElementById("proceso").value=JSON.stringify(proceso);
 }

@@ -51,26 +51,26 @@ class DetalleFactura(models.Model):
 	def __unicode__(self):
 		return self.descripcion
 
-	def save(self, *args, **kwargs):
-		try:
-			consultaPrecio = Inventario.objects.get(producto=self.producto)
-			self.precio = round(float(consultaPrecio.valorVenta))
-			self.valorIva = round(float(consultaPrecio.valorIva)*self.cantidad)
-			self.subtotal = round(float(self.precio)*self.cantidad)
-			#consultaPrecio.cantidad -= self.cantidad
-			consultaPrecio.save()
-			consultaFactura = Factura.objects.get(serie = str(self.factura))
-			consultaFactura.iva = round(float(consultaFactura.iva)) + round(float(self.valorIva))
-			consultaFactura.total = round(float(consultaFactura.total))+ round(float(self.subtotal))
-			consultaFactura.save()
-			super(DetalleFactura, self).save(*args, **kwargs)
-		except IntegrityError :
-			return redirect('factura:factura_insert')
-		else:
-			pass
-
-		super(DetalleFactura, self).save(*args, **kwargs)
-
+	# def save(self, *args, **kwargs):
+	# 	try:
+	# 		consultaPrecio = Producto.objects.get(producto=self.producto)
+	# 		self.precio = round(float(consultaPrecio.valorVenta))
+	# 		self.valorIva = round(float(consultaPrecio.valorIva)*self.cantidad)
+	# 		self.subtotal = round(float(self.precio)*self.cantidad)
+	# 		#consultaPrecio.cantidad -= self.cantidad
+	# 		consultaPrecio.save()
+	# 		consultaFactura = Factura.objects.get(serie = str(self.factura))
+	# 		consultaFactura.iva = round(float(consultaFactura.iva)) + round(float(self.valorIva))
+	# 		consultaFactura.total = round(float(consultaFactura.total))+ round(float(self.subtotal))
+	# 		consultaFactura.save()
+	# 		super(DetalleFactura, self).save(*args, **kwargs)
+	# 	except IntegrityError :
+	# 		return redirect('factura:factura_insert')
+	# 	else:
+	# 		pass
+	#
+	# 	super(DetalleFactura, self).save(*args, **kwargs)
+	#
 
 # en ./manage.py shell
 # from inventario.models import Inventario

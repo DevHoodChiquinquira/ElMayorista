@@ -15,6 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import (
+handler400, handler403, handler404, handler500
+)
+# from usuario import views as usuario_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,6 +30,4 @@ urlpatterns = [
     #url(r'^', include('inventario.urls', namespace='inventario')),
     url(r'^cliente/', include('cliente.urls', namespace = 'cliente')),
     url(r'^', include('factura.urls', namespace = 'factura')),
-
-
-]
+]+	static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

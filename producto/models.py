@@ -22,7 +22,7 @@ class Producto(models.Model):
 		decimal_places=2, default=0.00, verbose_name="Valor de venta")
 
 	def __unicode__(self):
-		return self.elemento
+		return self.producto
 
 
 	def save(self, *args, **kwargs):
