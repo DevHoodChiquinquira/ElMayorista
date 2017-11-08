@@ -25,6 +25,18 @@
               </form>
           </div>
         </div>
+
+<!-- prueba tira -->
+<div class="form-group col-md-3 ">
+        <div class="busqueda">
+            <form class="navbar-search pull-left" method="POST" name="detalle_facturaT" action="{%url 'factura:factura_tira'%}">{% csrf_token%}
+                <input title="se requiere numero" type="number" name="busquedaT" class="search-query" placeholder="Buscar factura tira"  required>
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
+                </div>
+            </form>
+        </div>
+      </div>
 </div>
 
 

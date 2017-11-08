@@ -186,3 +186,14 @@ class PdfFactura(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
         datoFactura = Factura.objects.filter(serie=buscar)
         return write_pdf('factura/factura_Detalle.html',
                          { 'ventas':ventas, 'pagesize':'A4', 'datoFactura':datoFactura})
+
+
+class FacturaTira(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+    permission_required = ('factura.add_factura')
+    def post(self, request, *args, **kwargs):
+        buscar = request.POST['busquedaT']
+        print(buscar)
+        ventas = DetalleFactura.objects.filter(factura=buscar).order_by("-producto")
+        datoFactura = Factura.objects.filter(serie=buscar)
+        return write_pdf('factura/factura_Tira.html',
+                         { 'ventas':ventas, 'pagesize':'A4', 'datoFactura':datoFactura})

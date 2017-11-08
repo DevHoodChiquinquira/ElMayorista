@@ -15,6 +15,9 @@ urlpatterns = [
     url(r'^factura/reporteAll', views.Generar_pdf, name='reporte_Facturas'),
     url(r'^factura/Pdf_Factura', views.PdfFactura.as_view(),
        name='reporte_Detalle_Factura'),
+    url(r'^factura/factura_Tira', views.FacturaTira.as_view(),
+        name='factura_tira'),
+
     # url(r'^factura$',
     # 	TemplateView.as_view(template_name="factura/factura_index.html"),
     # 	name="factura"),
