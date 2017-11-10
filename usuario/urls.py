@@ -14,4 +14,17 @@ urlpatterns = [
     url(r'^perfil/edit(?P<pk>[0-9]+)/$',views.PerfilUpdate.as_view(),
     	name='perfil_edit'),
 	url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name="logout"),
+
+    url(r'^pagina_Cubiertos', views.paginaCubiertos, name='pagina_Cubiertos'),
+    url(r'^pagina_Bolsas', views.paginaBolsas, name='pagina_Bolsas'),
+    url(r'^pagina_ProInstitucional', views.paginaProInstitucional,
+        name='pagina_ProInstitucional'),
+    url(r'^pagina_Pinateria', views.paginaPinateria, name='pagina_Pinateria'),
+    url(r'^pagina_LagunaFuquene', views.paginaLagunaFuquene,
+        name='pagina_LagunaFuquene'),
+    url(r'^pagina_FloresGuavata', views.paginaFloresGuavata,
+        name='pagina_FloresGuavata'),
+    url(r'^pagina_Cooperativismo', views.paginaCooperativismo,
+        name='pagina_Cooperativismo'),
+
 ]

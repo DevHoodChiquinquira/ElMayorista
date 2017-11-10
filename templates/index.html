@@ -28,7 +28,7 @@
     </section>
 
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success">
       <a class="navbar-brand" href="{% url 'usuario:index' %}">
         <img src= {% static "images/logo.png" %} width="30" height="30" class="d-line-block aling-top" alt="logo">
       </a>
@@ -54,7 +54,7 @@
             <button type="button" onclick="window.location.href={%url 'usuario:logout'%}" class="btn btn-outline-danger mr-5 ml-5">Cerrar Sesión</button>
 
           {% else %}
-            <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-success mr-5 ml-5">Iniciar sesión</button>
+            <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-dark mr-5 ml-5">Iniciar sesión</button>
           {%endif%}
 
 
@@ -67,12 +67,9 @@
     <!--Jumbroton -->
     <div class="jumbotron jumbotron-fluid  ">
       <div class="container">
-        <h1 class="display-4 text-center">Soy un desarrollador de software enfocado en el Backend </h1>
-        <p class="lead text-justify">Mi nombre es Rafael Romario soy una persona apasionada en el desarrollo
-          de soluciones creativas enfocadas en el software. Posee las competencias de construir complejas
-          aplicaciones para individuos y empresas siempre con el enfoque de proveer interfaces intuitivas
-          y de facil uso para que cualquier usuario pueda acceder a la informacion.
-          ¿Está buscando un sitio web de alta calidad para su organización o empresa a un precio competitivo?.</p>
+        <h1 class="display-4 text-center">"La variedad y la atención marcan la diferencia" </h1>
+        <p class="lead text-justify"> El mayorista es empresa Chiquinquireña al servicio de la
+          comunidad ofreciendo los mejores productos plasticos y desechables  .</p>
         </div>
       </div>
     <!--Jumbroton end -->
@@ -81,85 +78,126 @@
     <section class="container mt-2 pt-2" id="herramientas">
       <div class="card-deck">
         <div class="card">
-          <img class="card-img-top img-fluid" src={% static "images/python-logo.png" %} alt="python logo">
+          <img class="card-img-top img-fluid" src={% static "images/vaso-desechable.jpg" %} alt="cubiertos desechables">
           <div class="card-body">
-            <h4 class="card-title">¿Por qué usar python?</h4>
-            <p class="card-text">Python es uno de los lenguajes mas populares en la web y es usado por las mejores empresas del mundo.</p>
-            <button type="button" class="btn btn-dark">leer</button>
+            <h4 class="card-title">Cubiertos</h4>
+            <p class="card-text text-justify">Para todas sus fiestas y reuniones los mejores
+              cubiertos, copas y platos desechables.
+            </p>
+            <div class="card-footer text-center">
+              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_Cubiertos' %}'" class="btn btn-success">leer</button>
+            </div>
           </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src={% static "images/django-logo.png" %} alt="Card image cap">
+          <img class="card-img-top img-fluid" src={% static "images/bolsas.jpg" %} alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title">¿Django el Framework perfecto de python?</h4>
-            <p class="card-text">Django es usado por empresas como Instagram, The New York times, Nasa Science,
-                National Geographic entre otras.</p>
-            <button type="button" class="btn btn-dark">leer</button>
+            <h4 class="card-title">Bolsas</h4>
+            <p class="card-text text-justify">Bolsas de papel y plasticas de diferentes tamaños para
+              usos de mercados, bolsas industriales.</p>
+            <div class="card-footer text-center">
+              <button type="button" class="btn btn-success">leer</button>
+            </div>
           </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src={% static "images/mstile-310x150.png" %}  alt="Card image cap">
+          <img class="card-img-top img-fluid" src={% static "images/producto-institucional.jpg" %} alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title">¿Qué es bootstrap?</h4>
-            <p class="card-text">Es un poderoso framework desarrollado por Twitter,
-              el cual genera una experiencia mas agradable a tus sitios wev.</p>
-            <button type="button" class="btn btn-dark">leer</button>
+            <h4 class="card-title">Productos institucionales</h4>
+            <p class="card-text text-justify">Los mejores productos institucionales de desechables el Mayorista</p>
+            <div class="card-footer text-center">
+              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_ProInstitucional' %}'" class="btn btn-success">leer</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top img-fluid" src={% static "images/pinata.jpg" %}  alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Piñateria</h4>
+            <p class="card-text text-justify">Todos los articulos para decoraciones y juguetes para sus
+              fiestas infantiles, 15 años y cumpleaños.</p>
+              <div class="card-footer text-center">
+                <button type="button" class="btn btn-success">leer</button>
+              </div>
           </div>
         </div>
       </div>
     </section>
 
     <!--Jumbroton -->
-    <div class="jumbotron jumbotron-fluid bg-dark text-white mt-5" id="proyectos">
+    <div class="jumbotron jumbotron-fluid bg-success text-dark mt-5" id="proyectos">
       <div class="container">
-        <h1 class="display-5 text-center">Estos son unos de mis proyectos recientes, me facinaria agregar el tuyo tambien. </h1>
+        <h1 class="display-5 text-center">Somos una empresa con conciencia ambiental y social,
+          dando nuestro grano de arena. </h1>
         </div>
       </div>
     <!--Jumbroton end -->
 
-    <!--card-->
-    <section class="container mt-2 pt-2">
-      <div class="card-group">
+
+
+    <section class="container mt-2 pt-2" id="herramientas">
+      <div class="card-deck">
         <div class="card">
-          <img class="card-img-top" src={% static "images/aluminios.png" %} alt="Card image cap">
+          <img class="card-img-top img-fluid" src={% static "images/titular-fuquene.jpg" %} alt="cubiertos desechables">
           <div class="card-body">
-            <h4 class="card-title">aliminiosboyacaje.com</h4>
-            <p class="card-text">Desarrollado en Bootstrap, Python Django.</p>
-          </div>
-          <div class="card-footer">
-            <button onclick="window.location.href='aluminios.html'" type="button" class="btn btn-dark">leer</button>
+            <h4 class="card-title">Laguna de Fúquene</h4>
+            <p class="card-text">La laguna que provee a Chiquinquirá y otros municipios se
+              encuentra en riesgo, no mas indiferencia.
+            </p>
+            <div class="card-footer text-center">
+              <button type="button" class="btn btn-success">leer</button>
+            </div>
           </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src={% static "images/mayorista.png" %} alt="Card image cap">
+          <img class="card-img-top img-fluid" src={% static "images/RutaFloresGuavata.png" %} alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title">elmayorista.com</h4>
-            <p class="card-text">Desarrollado en Bootstrap, Python Django.</p>
+            <h4 class="card-title">Guavata: Ruta De Las Flores</h4>
+            <p class="card-text">Apoyando el proyecto de embellecimiento de mi municipio natal.</p>
+            <div class="card-footer text-center">
+              <button type="button" class="btn btn-success">leer</button>
+            </div>
           </div>
-          <div class="card-footer">
-            <button  type="button" class="btn btn-dark">leer</button>
+        </div>
+        <div class="card">
+          <img class="card-img-top img-fluid" src={% static "images/comerciacoop.png" %}  alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Cooperativismo</h4>
+            <p class="card-text">Orgulloso de pertenecer  Coomerciacop,
+              la cooperativa de nuestro municipio Chiquinquireño.</p>
+              <div class="card-footer text-center">
+                <button type="button" class="btn btn-success">leer</button>
+              </div>
           </div>
         </div>
       </div>
     </section>
 
 
-    <footer class="container-fluid bg-dark mt-5 pt-2">
-      <div class="row text-white py-4 text-white  text-center justify-content-center ">
-        <div class="col-md-4 ">
-          <img src= {% static "images/python-powered-w.svg" %}  alt="logo python powered" width="auto" height="40px" class="rounded mx-auto d-block">
 
+
+    <footer class="container-fluid bg-success mt-5 pt-2">
+      <div class="row text-white py-4 text-white  text-center justify-content-center ">
+                <div class="col-md-4 " >
+                      <h6 class="lead"> Desarrollado <br><br>
+                      <a href="http://www.hoodeddeveloper.com/"  target="_blank">  <img src= {% static "images/Logo-Hooded-Developer.png" %}  alt="logo hooded developer" width="auto" height="60px" class="rounded mx-auto d-block"></a>
+                    </h6>
+                </div>
+
+                <div class="col-md-4 " >
+                    <h6 class="lead"> Chiquinquirá - Boyacá <br>
+                    Carrera 10 # 11-18<br>
+                    Telefonos: 310 569 6085 - 313 207 1454
+                    </h6>
+                </div>
+
+                <div class="col-md-4">
+                  <h6 class="lead"> Contactanos</h6>
+                  <h6 class="lead"> info@elmayorista.com.co <br><br>
+                  <a href="#" target="_blank"> <span class="fa fa-facebook fa-2x" ></span></a>
+
+                </div>
         </div>
-        <div class="col-md-4 " >
-          <a href="https://hoodeddeveloper.com.co" target="_blank"> &copy; Hooded Developer</a>
-        </div>
-        <div class="col-md-4">
-          <h6 class="lead"> Sigueme</h6>
-          <a href="#"> <span class="fa fa-twitter fa-2x"></span></a>
-          <a href="#"> <span class="fa fa-facebook fa-2x" ></span></a>
-          <a href="#"> <span class="fa fa-youtube fa-2x"></span></a>
-        </div>
-      </div>
     </footer>
 
     <!-- Optional JavaScript -->

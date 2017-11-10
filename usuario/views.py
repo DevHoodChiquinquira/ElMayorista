@@ -68,3 +68,25 @@ class PerfilUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         form.instance.user = self.request.user
         return super(PerfilUpdate, self).form_valid(form)
 #-----------------END - Profile------------------
+
+
+def paginaCubiertos(request):
+    return render (request, 'paginas/Cubiertos.html', {})
+
+def paginaBolsas(request):
+    return render (request, 'paginas/Bolsas.html', {})
+
+def paginaProInstitucional(request):
+    return render (request, 'paginas/ProInstitucional.html', {})
+
+def paginaPinateria(request):
+    return render (request, 'paginas/pinateria.html', {})
+
+def paginaLagunaFuquene(request):
+    return render (request, 'paginas/LagunaFuquene.html', {})
+
+def paginaFloresGuavata(request):
+    return render (request, 'paginas/FloresGuavata.html', {})
+
+def paginaCooperativismo(request):
+    return render (request, 'paginas/Cooperativismo.html', {})

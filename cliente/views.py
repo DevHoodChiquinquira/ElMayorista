@@ -21,7 +21,7 @@ class ClienteInsert(LoginRequiredMixin,
                     PermissionRequiredMixin, CreateView):
     permission_required = ('cliente.add_cliente')
     model = Cliente
-    success_url = reverse_lazy('cliente:cliente_listar')
+    success_url = reverse_lazy('cliente:cliente_list')
     fields = ['dni', 'nombreEmpresa', 'nombreRepresentante',
               'apellidoRepresentante', 'telefono', 'correo',
               'ciudad', 'direccion', 'banco', 'tipoCuenta',
@@ -35,7 +35,7 @@ class ClienteList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 class ClienteUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     permission_required = ('cliente.change_cliente')
     model = Cliente
-    success_url = reverse_lazy('cliente:cliente_listar')
+    success_url = reverse_lazy('cliente:cliente_list')
     fields = ['dni', 'nombreEmpresa', 'nombreRepresentante',
               'apellidoRepresentante', 'telefono', 'correo',
               'ciudad', 'direccion', 'banco', 'tipoCuenta',
