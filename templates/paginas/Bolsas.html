@@ -1,0 +1,40 @@
+{% extends "base_paginas.html" %}
+
+{%load staticfiles%}
+{% block paginas %}
+
+<section class="container">
+  <h1><p class="mt-5 text-center text-uppercase font-weight-bold">Bolsas</p></h1>
+</section>
+
+
+<section class="container mt-2 pt-2" id="bolsas1">
+  <div class="card-deck">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="{% static "images/bolsa/brown-rice.jpg" %}" alt="Cuchara eco">
+      <div class="card-body">
+        <h4 class="card-title text-center">Bolsas para alimentos</h4>
+      </div>
+    </div>
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="{% static "images/bolsa/green-beans.jpg" %}" alt="Cuchara eco">
+      <div class="card-body">
+        <h4 class="card-title text-center">Bolsas para alimentos</h4>
+      </div>
+    </div>
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="{% static "images/bolsa/garbage.jpg" %}" alt="Cuchara eco">
+      <div class="card-body">
+        <h4 class="card-title text-center">Bolsa industrial</h4>
+      </div>
+    </div>
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="{% static "images/bolsa/bag-paper.jpg" %}" alt="Cuchara eco">
+      <div class="card-body">
+        <h4 class="card-title text-center">Bolsa de papel</h4>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

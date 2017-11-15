@@ -14,8 +14,8 @@
     <link rel="icon" href="{% static "images/icono.ico" %}" >
     <style>
       .slider{
-        background: url({%static "images/Platzi-Stiker.jpeg"%});
-        height: 100vh;/*abarque el 100% dispositivo*/
+        background: url({%static "images/fachada.jpg"%});
+        height: 75vh;/*abarque el 100% dispositivo*/
         background-size: cover;
         background-position: center;
         background-color:gray; opacity:1;
@@ -37,26 +37,32 @@
         </div>
         <button type="submit" name="action" value="login" class="btn btn-success" >Submit</button>
         <hr>
-        <button type="button" onclick="window.location.href='index.html'" class="btn btn-warning">¿Te perdiste? Regresa con nostros</button>
+        <button type="button" onclick="window.location.href='{% url 'usuario:index' %}'" class="btn btn-warning">¿Te perdiste? Regresa con nostros</button>
       </form>
     </section>
-    <footer class="container-fluid bg-dark  pt-2">
-      <div class="row text-white py-4 text-white  text-center justify-content-center ">
-        <div class="col-md-4 ">
-          <img src= {% static "images/python-powered-w.svg" %}  alt="logo python powered" width="auto" height="40px" class="rounded mx-auto d-block">
 
+    <footer class="container-fluid bg-success " id="contacto">
+      <div class="row text-white py-4 text-white  text-center justify-content-center ">
+                <div class="col-md-4 " >
+                      <h6 class="lead"> Desarrollado <br><br>
+                      <a href="http://www.hoodeddeveloper.com/"  target="_blank">  <img src= {% static "images/Logo-Hooded-Developer.png" %}  alt="logo hooded developer" width="auto" height="60px" class="rounded mx-auto d-block"></a>
+                    </h6>
+                </div>
+
+                <div class="col-md-4 " >
+                    <h6 class="lead"> Chiquinquirá - Boyacá <br>
+                    Carrera 10 # 11-18<br>
+                    Telefonos: 310 569 6085 - 313 207 1454
+                    </h6>
+                </div>
+
+                <div class="col-md-4">
+                  <h6 class="lead"> Contactanos</h6>
+                  <h6 class="lead"> info@elmayorista.com.co <br><br>
+                  <a href="#" target="_blank"> <span class="fa fa-facebook fa-2x" ></span></a>
+
+                </div>
         </div>
-        <div class="col-md-4 " >
-          <a href="https://rafaelromario.com"> &copy; RafaelRomario</a>
-        </div>
-        <div class="col-md-4">
-          <h6 class="lead"> Sigueme</h6>
-          <a href="#"> <span class="fa fa-github fa-2x"></span></a>
-          <a href="#"> <span class="fa fa-twitter fa-2x"></span></a>
-          <a href="#"> <span class="fa fa-facebook fa-2x" ></span></a>
-          <a href="#"> <span class="fa fa-youtube fa-2x"></span></a>
-        </div>
-      </div>
     </footer>
 
     <!-- Optional JavaScript -->

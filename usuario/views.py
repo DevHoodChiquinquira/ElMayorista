@@ -69,6 +69,8 @@ class PerfilUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         return super(PerfilUpdate, self).form_valid(form)
 #-----------------END - Profile------------------
 
+def paginaquienesSomos(request):
+    return render (request, 'paginas/QuienesSomos.html', {})
 
 def paginaCubiertos(request):
     return render (request, 'paginas/Cubiertos.html', {})

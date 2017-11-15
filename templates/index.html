@@ -11,10 +11,10 @@
     -->
     <link rel="stylesheet" href="{% static "css/bootstrap.css"%}">
     <link rel="stylesheet" href="{% static "css/font-awesome.css"%}">
-    <link rel="icon" href="{% static "images/icono.ico" %}" >
+    <link rel="icon" href="{% static "images/logo.png" %}" >
     <style>
       .slider{
-        background: url({%static "images/desechables.jpg"%});
+        background: url({%static "images/fachada.jpg"%});
         height: 100vh;/*abarque el 100% dispositivo*/
         background-size: cover;
         background-position: center;
@@ -24,13 +24,13 @@
   </head>
   <body>
     <section class="container-fluid slider d-flex justify-content-center align-items-center" id="inicio">
-      <h5 class="display-3 text-light ">El Mayorista</h5>
+      {# <h5 class="display-3 text-light ">El Mayorista</h5>#}
     </section>
 
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success">
       <a class="navbar-brand" href="{% url 'usuario:index' %}">
-        <img src= {% static "images/logo.png" %} width="30" height="30" class="d-line-block aling-top" alt="logo">
+        <img src= "{% static "images/logo.png" %}" width="30" height="30" class="d-line-block aling-top" alt="logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,26 +38,31 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <div class="navbar-nav mr-auto text-center">
-
-
-          <a class="nav-item- nav-link active" href="{% url 'usuario:index' %}">¿Quienes somos?</a>
-
-          <a class="nav-item- nav-link " href="#proyectos">Productos</a>
-
-          <a class="nav-item- nav-link " href="#proyectos">Contactanos</a>
-
-
+          <a class="nav-item- nav-link active" href="{% url 'usuario:pagina_quienesSomos' %}">¿Quienes somos?</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" data-toggle="dropdown">Productos</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_Bolsas' %}">Bolsas</a>
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_Cubiertos' %}">Cubiertos</a>
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_ProInstitucional' %}">Productos institucionales</a>
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_Pinateria' %}">Piñateria</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" data-toggle="dropdown">Noticias</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"  href="">Laguna de Fúquene</a>
+              <a class="dropdown-item"  href="">Guavata: Ruta De Las Flores</a>
+              <a class="dropdown-item"  href="">Cooperativismo</a>
+            </div>
+          </li>
+          <a class="nav-item- nav-link active" href="#contacto">Contactanos</a>
           {% if user.is_authenticated %}
-
             <a class="nav-item- nav-link fa fa-user-circle fa-2x p-3 mb-2 bg-light text-dark mr-5 ml-5" href="{% url 'usuario:system_index' %}"></a>
-
             <button type="button" onclick="window.location.href={%url 'usuario:logout'%}" class="btn btn-outline-danger mr-5 ml-5">Cerrar Sesión</button>
-
           {% else %}
             <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-dark mr-5 ml-5">Iniciar sesión</button>
           {%endif%}
-
-
             </div>
         </div>
       </div>
@@ -65,11 +70,11 @@
 
 
     <!--Jumbroton -->
-    <div class="jumbotron jumbotron-fluid  ">
+    <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4 text-center">"La variedad y la atención marcan la diferencia" </h1>
         <p class="lead text-justify"> El mayorista es empresa Chiquinquireña al servicio de la
-          comunidad ofreciendo los mejores productos plasticos y desechables  .</p>
+          comunidad ofreciendo los mejores productos plasticos y desechables.</p>
         </div>
       </div>
     <!--Jumbroton end -->
@@ -85,7 +90,7 @@
               cubiertos, copas y platos desechables.
             </p>
             <div class="card-footer text-center">
-              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_Cubiertos' %}'" class="btn btn-success">leer</button>
+              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_Cubiertos' %}'" class="btn btn-success">ver</button>
             </div>
           </div>
         </div>
@@ -96,7 +101,7 @@
             <p class="card-text text-justify">Bolsas de papel y plasticas de diferentes tamaños para
               usos de mercados, bolsas industriales.</p>
             <div class="card-footer text-center">
-              <button type="button" class="btn btn-success">leer</button>
+              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_Bolsas' %}'" class="btn btn-success">ver</button>
             </div>
           </div>
         </div>
@@ -106,7 +111,7 @@
             <h4 class="card-title">Productos institucionales</h4>
             <p class="card-text text-justify">Los mejores productos institucionales de desechables el Mayorista</p>
             <div class="card-footer text-center">
-              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_ProInstitucional' %}'" class="btn btn-success">leer</button>
+              <button type="button" onclick="window.location.href='{% url 'usuario:pagina_ProInstitucional' %}'" class="btn btn-success">ver</button>
             </div>
           </div>
         </div>
@@ -117,7 +122,7 @@
             <p class="card-text text-justify">Todos los articulos para decoraciones y juguetes para sus
               fiestas infantiles, 15 años y cumpleaños.</p>
               <div class="card-footer text-center">
-                <button type="button" class="btn btn-success">leer</button>
+                <button type="button" onclick="window.location.href='{% url 'usuario:pagina_Pinateria' %}'" class="btn btn-success">ver</button>
               </div>
           </div>
         </div>
@@ -135,7 +140,7 @@
 
 
 
-    <section class="container mt-2 pt-2" id="herramientas">
+    <section class="container mt-2 pt-2" id="noticias">
       <div class="card-deck">
         <div class="card">
           <img class="card-img-top img-fluid" src={% static "images/titular-fuquene.jpg" %} alt="cubiertos desechables">
@@ -144,9 +149,9 @@
             <p class="card-text">La laguna que provee a Chiquinquirá y otros municipios se
               encuentra en riesgo, no mas indiferencia.
             </p>
-            <div class="card-footer text-center">
-              <button type="button" class="btn btn-success">leer</button>
-            </div>
+            <!--<div class="card-footer text-center">
+              <button type="button" class="btn btn-success">ver</button>
+            </div>-->
           </div>
         </div>
         <div class="card">
@@ -154,9 +159,9 @@
           <div class="card-body">
             <h4 class="card-title">Guavata: Ruta De Las Flores</h4>
             <p class="card-text">Apoyando el proyecto de embellecimiento de mi municipio natal.</p>
-            <div class="card-footer text-center">
-              <button type="button" class="btn btn-success">leer</button>
-            </div>
+            <!--<div class="card-footer text-center">
+              <button type="button" class="btn btn-success">ver</button>
+            </div>-->
           </div>
         </div>
         <div class="card">
@@ -165,9 +170,9 @@
             <h4 class="card-title">Cooperativismo</h4>
             <p class="card-text">Orgulloso de pertenecer  Coomerciacop,
               la cooperativa de nuestro municipio Chiquinquireño.</p>
-              <div class="card-footer text-center">
-                <button type="button" class="btn btn-success">leer</button>
-              </div>
+              <!--<div class="card-footer text-center">
+                <button type="button" class="btn btn-success">ver</button>
+              </div>-->
           </div>
         </div>
       </div>
@@ -176,7 +181,7 @@
 
 
 
-    <footer class="container-fluid bg-success mt-5 pt-2">
+    <footer class="container-fluid bg-success mt-5 pt-2" id="contacto">
       <div class="row text-white py-4 text-white  text-center justify-content-center ">
                 <div class="col-md-4 " >
                       <h6 class="lead"> Desarrollado <br><br>

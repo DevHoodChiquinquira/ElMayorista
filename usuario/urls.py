@@ -15,6 +15,7 @@ urlpatterns = [
     	name='perfil_edit'),
 	url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name="logout"),
 
+    url(r'^pagina_quienesSomos', views.paginaquienesSomos, name='pagina_quienesSomos'),
     url(r'^pagina_Cubiertos', views.paginaCubiertos, name='pagina_Cubiertos'),
     url(r'^pagina_Bolsas', views.paginaBolsas, name='pagina_Bolsas'),
     url(r'^pagina_ProInstitucional', views.paginaProInstitucional,

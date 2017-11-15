@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static "css/bootstrap.css"%}">
     <link rel="stylesheet" href="{% static "css/font-awesome.css"%}">
     <link rel="icon" href="{% static "images/icono.ico" %}" >
+    <title>El Mayorista</title>
 
   </head>
   <body>
@@ -27,11 +28,29 @@
         <div class="navbar-nav mr-auto text-center">
 
 
-          <a class="nav-item- nav-link active" href="{% url 'usuario:index' %}">¿Quienes somos?</a>
+          <a class="nav-item- nav-link active active" href="{% url 'usuario:pagina_quienesSomos' %}">¿Quienes somos?</a>
 
-          <a class="nav-item- nav-link " href="#proyectos">Productos</a>
 
-          <a class="nav-item- nav-link " href="#proyectos">Contactanos</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" data-toggle="dropdown">Productos</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_Bolsas' %}">Bolsas</a>
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_Cubiertos' %}">Cubiertos</a>
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_ProInstitucional' %}">Productos institucionales</a>
+              <a class="dropdown-item"  href="{% url 'usuario:pagina_Pinateria' %}">Piñateria</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" data-toggle="dropdown">Noticias</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"  href="">Laguna de Fúquene</a>
+              <a class="dropdown-item"  href="">Guavata: Ruta De Las Flores</a>
+              <a class="dropdown-item"  href="">Cooperativismo</a>
+            </div>
+          </li>
+
+          <a class="nav-item- nav-link active" href="#contacto">Contactanos</a>
 
 
           {% if user.is_authenticated %}
@@ -43,6 +62,8 @@
           {% else %}
             <button type="button" onclick="window.location.href={% url 'usuario:authentication' %}" class="btn btn-outline-dark mr-5 ml-5">Iniciar sesión</button>
           {%endif%}
+
+
             </div>
         </div>
       </div>
@@ -55,7 +76,7 @@
 
 
 
-    <footer class="container-fluid bg-success mt-5 pt-2">
+    <footer class="container-fluid bg-success mt-5 pt-2" id="contacto">
       <div class="row text-white py-4 text-white  text-center justify-content-center ">
                 <div class="col-md-4 " >
                       <h6 class="lead"> Desarrollado <br><br>
