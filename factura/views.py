@@ -27,6 +27,7 @@ import xhtml2pdf.pisa as pisa
 import cStringIO as StringIO
 from django import http
 import cgi
+import csv
 #modelos
 from cliente.models import Cliente
 from producto.models import Producto
@@ -197,3 +198,29 @@ class FacturaTira(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
         datoFactura = Factura.objects.filter(serie=buscar)
         return write_pdf('factura/factura_Tira.html',
                          { 'ventas':ventas, 'pagesize':'A4', 'datoFactura':datoFactura})
+
+
+#en pdf
+class PdfFacturasRango(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+    permission_required = ('factura.add_factura')
+    def post(self, request, *args, **kwargs):
+        buscarFechaInicio = request.POST['busqueda-fechaInicio']
+        buscarFechaFinal = request.POST['busqueda-fechaFinal']
+        print(buscarFechaInicio)
+        print(buscarFechaFinal)
+        ventasRangoFechas = Factura.objects.filter(fecha__range=(buscarFechaInicio, buscarFechaFinal))
+        return write_pdf('factura/reporte_facturas_fecha.html',
+                         { 'ventasRangoFechas':ventasRangoFechas,
+                          'pagesize':'A4'})
+
+def csv_facturas(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Desposition']='attachment; filename=factura.csv'
+    writer = csv.writer(response)
+    writer.writerow(['SERIE', 'FECHA', 'IVA', 'TOTAL', 'VENDEDOR'])
+    buscarFechaInicio = request.POST['busqueda-fechaInicio']
+    buscarFechaFinal = request.POST['busqueda-fechaFinal']
+    ventasRangoFechas = Factura.objects.filter(fecha__range=(buscarFechaInicio, buscarFechaFinal))
+    for datos in ventasRangoFechas:
+        writer.writerow([datos.serie, datos.fecha, datos.iva, datos.total, datos.vendedor])
+    return response

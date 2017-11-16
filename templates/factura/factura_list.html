@@ -10,7 +10,7 @@
     <div class="pdf">
         <form class="navbar-search pull-left" method="POST" action="{%url 'factura:reporte_Facturas'%}">{% csrf_token%}
           <label >Reporte ventas totales</label>
-          <button class="btn btn-primary" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
+          <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
         </form>
     </div>
   </div>
@@ -20,7 +20,7 @@
               <form class="navbar-search pull-left" method="POST" name="detalle_factura" action="{%url 'factura:reporte_Detalle_Factura'%}">{% csrf_token%}
                   <input title="se requiere numero" type="number" name="busqueda" class="search-query" placeholder="Buscar factura"  required>
                   <div class="btn-group">
-                      <button class="btn btn-primary" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
+                      <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
                   </div>
               </form>
           </div>
@@ -32,14 +32,89 @@
             <form class="navbar-search pull-left" method="POST" name="detalle_facturaT" action="{%url 'factura:factura_tira'%}">{% csrf_token%}
                 <input title="se requiere numero" type="number" name="busquedaT" class="search-query" placeholder="Buscar factura tira"  required>
                 <div class="btn-group">
-                    <button class="btn btn-primary" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
+                    <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
                 </div>
             </form>
         </div>
       </div>
+
+      <div class="form-group col-md-3 ">
+              <div class="busqueda-fecha-rango">
+                <label for="">facturas por fecha</label>
+                <button type="button" class="btn btn-success fa fa-search" data-toggle="modal" data-target="#FacturasRangoFechaModal"></button>
+              </div>
+      </div>
+
+
 </div>
 
+<!--modal-->
+<!-- producto modal-->
+<div class="modal fade" id="FacturasRangoFechaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reporte de facturas por fecha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{%url 'factura:csv_factura_rango_fecha'%}"  id="f-rango-fecha">
+          {% csrf_token%}
+          <div class="form-row">
+            <div class="form-group col-md-5 ">
+              <label for="inputEmail4">Fecha Inicio</label>
+              <input name="busqueda-fechaInicio" id="b-f-fechaInicio" type="date" class="form-control fa fa-calendar" placeholder="30-12-2017"  min="2017-04-01" max="2050-12-20" required>
+            </div>
+            <div class="form-group col-md-5">
+              <label for="inputPassword5">fecha Final</label>
+              <input name="busqueda-fechaFinal" id="b-f-fechaFinal" type="date" class="form-control fa fa-calendar" placeholder="30-12-2017" min="2017-04-01" max="2050-12-20" required>
+            </div>
+            <div class="form-group col-md-2 ">
+              <label for="inputAddress"></label>
+              <button type="submit"  class="btn btn-success fa fa-file-excel-o"></button>
+            </div>
+            </div>
+          </form>
+<!--pdf -->
+    <form method="POST" action="{%url 'factura:factura_rango_fecha'%}"  id="f-rango-fecha">
+        {% csrf_token%}
+        <div class="form-row">
+          <div class="form-group col-md-5 ">
+            <label for="inputEmail4">Fecha Inicio</label>
+            <input name="busqueda-fechaInicio" id="b-f-fechaInicio" type="date" class="form-control fa fa-calendar" placeholder="30-12-2017"  min="2017-04-01" max="2050-12-20" required>
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputPassword5">fecha Final</label>
+            <input name="busqueda-fechaFinal" id="b-f-fechaFinal" type="date" class="form-control fa fa-calendar" placeholder="30-12-2017" min="2017-04-01" max="2050-12-20" required>
+          </div>
+          <div class="form-group col-md-2 ">
+            <label for="inputAddress"></label>
+            <button type="submit"  class="btn btn-success fa fa-file-pdf-o"></button>
+          </div>
 
+          </div>
+        </form>
+<!--pdf -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+      <p class="text-justify">
+      Para abrir con excel solo da click derecho sobre el archivo y abrir con Excel o
+      arrastra el archivo a Excel.</br> </br>
+      Las operaciones matematicas cuando lo abras con Excel. </br>
+      inicialmente abre con bloc de notas y con control+f o control+b busca los puntos(.)
+      de valores numericos y cambialos por comas(;) esto te permitira hacer
+      operaciones matematicas cuando lo abras con excel.
+      </p>
+
+
+    </div>
+  </div>
+</div>
+</div>
+<!--producto fin modal-->
 
 <table class= "table table-striped table-responsive">
   <thead class="">

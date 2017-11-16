@@ -1,0 +1,40 @@
+<\<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Reporte de facturas</title>
+	</head>
+	<body>
+				<center><h1> DISTRIBUIDORA DESECHABLES </br> EL MAYORISTA </h1>
+		    <h6> "La variedad y la atención marcan la diferencia"</br>
+							Calle 11 No.9-86, Chiquinquirá (Boyacá)</br>
+								Tel: 310 569 6085  -  321 921 2008</h6></center>
+		    <h5><p align="left">JAIME HELI QUINTERO RODRÍGUEZ</br>
+		        NIT. 5657839-0</br>
+		        Regimen común</p></h5>
+
+            <table id="factura_fecha" class="table table-bordered table-striped">
+        	    <thead>
+        	        <tr>
+        						<th style="border:1px solid black; padding: 2px;">SERIE</th>
+                    <th style="border:1px solid black; padding: 2px;">FECHA</th>
+                    <th style="border:1px solid black; padding: 2px;">IVA</th>
+                    <th style="border:1px solid black; padding: 2px;">TOTAL</th>
+                    <th style="border:1px solid black; padding: 2px;">VENDEDOR</th>
+        	        </tr>
+        	    </thead>
+        	    <tbody>
+        		    	{% for factura in ventasRangoFechas %}
+        		    		<tr>
+        		    			<td align="center" style="border:1px solid black; padding: 2px;">{{factura.serie}}</td>
+                      <td align="center" style="border:1px solid black; padding: 2px;">{{factura.fecha}}</td>
+                      <td align="center" style="border:1px solid black; padding: 2px;">{{factura.iva}}</td>
+                      <td align="center" style="border:1px solid black; padding: 2px;">{{factura.total}}</td>
+                      <td align="center" style="border:1px solid black; padding: 2px;">{{factura.vendedor}}</td>
+        		    		</tr>
+        		    	{% endfor %}
+        	    </tbody>
+        		</table>
+
+	</body>
+</html>
