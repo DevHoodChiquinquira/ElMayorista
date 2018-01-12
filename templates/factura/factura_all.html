@@ -3,6 +3,20 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Reporte de facturas</title>
+		<!--se llama el tamaño que se mensiono en la vista-->
+		<style type="text/css">
+			@page {
+					size: {{ pagesize }};
+					margin: 1cm;
+					@frame footer {
+							-pdf-frame-content: footerContent;
+							bottom: 0cm;
+							margin-left: 9cm;
+							margin-right: 9cm;
+							height: 1cm;
+						}
+					}
+		</style>
 	</head>
 	<body>
 
@@ -26,7 +40,7 @@
 	        </tr>
 	    </thead>
 	    <tbody>
-	    	
+
 		    	{% for factura in ventas %}
 		    		<tr>
 		    			<td style="border:1px solid black; padding: 2px;">{{factura.serie}}</td>

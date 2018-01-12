@@ -175,7 +175,7 @@ def write_pdf(template_src, context_dict):
 def Generar_pdf(request):
     ventas = Factura.objects.all()
     return write_pdf('factura/factura_all.html',
-                     {'pagesize':'A4', 'ventas':ventas})
+                     {'pagesize':'A6', 'ventas':ventas})
 #Final de Funciones de Creacion de PDF legal
 
 class PdfFactura(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
@@ -186,7 +186,7 @@ class PdfFactura(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
         ventas = DetalleFactura.objects.filter(factura=buscar).order_by("-producto")
         datoFactura = Factura.objects.filter(serie=buscar)
         return write_pdf('factura/factura_Detalle.html',
-                         { 'ventas':ventas, 'pagesize':'A4', 'datoFactura':datoFactura})
+                         { 'ventas':ventas, 'pagesize':'A6', 'datoFactura':datoFactura})
 
 
 class FacturaTira(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
@@ -211,7 +211,7 @@ class PdfFacturasRango(LoginRequiredMixin, PermissionRequiredMixin, TemplateView
         ventasRangoFechas = Factura.objects.filter(fecha__range=(buscarFechaInicio, buscarFechaFinal))
         return write_pdf('factura/reporte_facturas_fecha.html',
                          { 'ventasRangoFechas':ventasRangoFechas,
-                          'pagesize':'A4'})
+                          'pagesize':'A6'})
 
 def csv_facturas(request):
     response = HttpResponse(content_type='text/csv')
