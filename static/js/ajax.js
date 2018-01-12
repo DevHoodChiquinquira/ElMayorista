@@ -87,7 +87,7 @@ $('#p-buscar').submit(function(e){
         html += 'Producto: '+json[i].fields.producto + '<br>';
         html += 'IVA: '+json[i].fields.valorIva + '<br>';
         html += 'valor Venta: '+json[i].fields.valorVenta + '<br>';
-        html += '<label> Valor venta </label> <input name="p-valorVenta" id="p-valorVenta" type="number" min="1" max="50000000" step="500" value=0 autocomplete="off" required="required"><br>';
+        html += '<label> Valor venta </label> <input name="p-valorVenta" id="p-valorVenta" type="number" min="1" max="50000000" step="500" value="'+json[i].fields.valorVenta+'" autocomplete="off" required="required"><br>';
         html += '<label> Cantidad </label> <input name="p-cantidad" id="p-cantidad" type="number" min="1" max="200" step="1" value=1 autocomplete="off" required="required"><br>';
 
         var fila = new Object();
