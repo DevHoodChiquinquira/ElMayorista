@@ -15,8 +15,6 @@ urlpatterns = [
     url(r'^factura/reporteAll', views.Generar_pdf, name='reporte_Facturas'),
     url(r'^factura/Pdf_Factura', views.PdfFactura.as_view(),
        name='reporte_Detalle_Factura'),
-    url(r'^factura/factura_Tira', views.FacturaTira.as_view(),
-        name='factura_tira'),
     url(r'^factura/facturas_rango_fecha', views.PdfFacturasRango.as_view(),
         name='factura_rango_fecha'),
     url(r'^factura/csv_facturas_rango_fecha', views.csv_facturas,

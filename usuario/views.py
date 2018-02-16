@@ -29,7 +29,7 @@ def authentication(request):
             if user is not None:
             	login(request, user)
                 return redirect('usuario:system_index')
-        return redirect('usuario:index')
+        return redirect('usuario:authentication')
     return render(request, 'login.html', {})
 
 @login_required()

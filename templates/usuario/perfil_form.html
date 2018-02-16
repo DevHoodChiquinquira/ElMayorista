@@ -3,12 +3,19 @@
 {% block system_Contable %}
 <form method="post">
 	<header>
-        <h2>Perfil de Usuario</h2>
-    </header>
-   
-    {% csrf_token %}
-    {{ form.as_p }}
+        <center><h2>Perfil de Usuario</h2></center><hr>
+  </header>
 
-    <input type="submit" value="Submit" />
+		{% csrf_token %}
+		<div class="form-row ">
+			{%for field in form %}
+				<div class="form-group col-md-4 ">
+					{{ field.errors }}
+					{{ field.label_tag }} <br> {{ field }}
+				</div>
+			{% endfor %}
+		</div>
+
+    <input type="submit" value="Guardar" class="btn btn-success pull-right" />
 </form>
 {%endblock%}

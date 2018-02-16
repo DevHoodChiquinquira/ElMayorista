@@ -4,12 +4,19 @@
 <form method="post">
 <a href=""><span class="icon fa-arrow-left "></span></a>
 	<header>
-        <h2>Elemento </h2>
+        <center><h2>Elemento </h2></center><hr>
     </header>
 
-    {% csrf_token %}
-    {{ form.as_p }}
+		{% csrf_token %}
+		<div class="form-row ">
+			{%for field in form %}
+				<div class="form-group col-md-4 ">
+					{{ field.errors }}
+					{{ field.label_tag }} <br> {{ field }}
+				</div>
+			{% endfor %}
+		</div>
 
-    <input type="submit" value="Submit" />
+    <input type="submit" class="btn btn-success pull-right" value="Guardar" />
 </form>
 {%endblock%}

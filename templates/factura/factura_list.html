@@ -5,47 +5,30 @@
 
 
 <div class="form-row">
-
-  <div class="form-group col-md-3 ">
-    <div class="pdf">
-        <form class="navbar-search pull-left" method="POST" action="{%url 'factura:reporte_Facturas'%}">{% csrf_token%}
-          <label >Reporte ventas totales</label>
-          <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
-        </form>
-    </div>
-  </div>
-
-  <div class="form-group col-md-3 ">
-          <div class="busqueda">
-              <form class="navbar-search pull-left" method="POST" name="detalle_factura" action="{%url 'factura:reporte_Detalle_Factura'%}">{% csrf_token%}
-                  <input title="se requiere numero" type="number" name="busqueda" class="search-query" placeholder="Buscar factura"  required>
-                  <div class="btn-group">
-                      <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
-                  </div>
-              </form>
-          </div>
-        </div>
-
-<!-- prueba tira -->
-<div class="form-group col-md-3 ">
-        <div class="busqueda">
-            <form class="navbar-search pull-left" method="POST" name="detalle_facturaT" action="{%url 'factura:factura_tira'%}">{% csrf_token%}
-                <input title="se requiere numero" type="number" name="busquedaT" class="search-query" placeholder="Buscar factura tira"  required>
-                <div class="btn-group">
-                    <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
-                </div>
-            </form>
-        </div>
+      <div class="form-group col-md-4 ">
+            <div class="busqueda">
+                  <form class="navbar-search pull-left" method="POST" name="detalle_factura" action="{%url 'factura:reporte_Detalle_Factura'%}">{% csrf_token%}
+                      <input title="se requiere numero" type="number" name="busqueda" class="search-query" placeholder="Buscar factura"  required>
+                      <div class="btn-group">
+                          <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
+                      </div>
+                  </form>
+            </div>
       </div>
-
-      <div class="form-group col-md-3 ">
+      <div class="form-group col-md-4 ">
               <div class="busqueda-fecha-rango">
                 <label for="">facturas por fecha</label>
                 <button type="button" class="btn btn-success fa fa-search" data-toggle="modal" data-target="#FacturasRangoFechaModal"></button>
               </div>
       </div>
-
-
+      <div class="form-group col-md-4 ">
+        <div class="pdf">
+            <form class="navbar-search pull-left" method="POST" action="{%url 'factura:reporte_Facturas'%}">{% csrf_token%}
+              <label >Reporte ventas totales</label>
+              <button class="btn btn-success" type="submit"><i class="icon fa fa-file-pdf-o"></i></button>
+            </form>
+        </div>
+      </div>
 </div>
 
 <!--modal-->
