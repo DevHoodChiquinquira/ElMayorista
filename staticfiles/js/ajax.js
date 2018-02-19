@@ -151,12 +151,16 @@ $("#p-seleccionar").click(function(){
 
   proceso.producto.push({'codigo': d[d.length-1].codigo, 'cantidad': d[d.length-1].cantidad, 'valorVenta': d[d.length-1].valorVenta});
   calTotal();
+  var efectivo = $("#efectivo").val();
   if (proceso.producto.length !=0){
     var htm = ""
     $('#productos').html(htm);
     $("#pcodigo").val('');
     $("#p-seleccionar").attr("disabled", true);
-    $("#comprar").attr("disabled", false);
+
+    if (efectivo>0) {
+      $("#comprar").attr("disabled", false);
+    }
   }
 
 })
@@ -170,8 +174,12 @@ function onEnviar(){
     //proceso.numero = $('#p-num').val();
     var tipoPago = $("#f-tipoPago").val();
     var idMaquina = $("#f-maquinaid").val();
+    var efectivo = $("#efectivo").val();
+    var devolver = $("#devolver").val();
     proceso.tipoPago = tipoPago;
     proceso.idMaquina = idMaquina;
+    proceso.efectivo = efectivo;
+    proceso.devolver = devolver;
 
     console.log(JSON.stringify(proceso));
     document.getElementById("proceso").value=JSON.stringify(proceso);

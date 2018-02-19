@@ -31,6 +31,10 @@ class Factura(models.Model):
 		null=True, blank=True)
 	total = models.DecimalField(max_digits=15, default=0,
 		decimal_places=2, null=True, blank=True)
+	dineroRecibido = models.DecimalField(max_digits=15, default=0,
+		decimal_places=2, null=True, blank=True)
+	dineroDevuelto = models.DecimalField(max_digits=15, default=0,
+		decimal_places=2, null=True, blank=True)
 	def __str__(self):
 		return str(self.serie)
 

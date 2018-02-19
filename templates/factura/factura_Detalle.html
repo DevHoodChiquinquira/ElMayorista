@@ -33,14 +33,14 @@
     {% for algo in datoFactura %}
 			<p align="left">
 				FACTURA DE VENTA: {{algo.serie}} </br>
-				FECHA: {{algo.fecha}} <br>
-				VENDEDOR: {{algo.vendedor.id}} - {{algo.vendedor}}
-				MÁQUINA: {{algo.maquina}}<br>
-				VENDIDO A:{{algo.cliente.apellidoRepresentante}}
-				NIT: {{algo.cliente}}<br>
-				CIUDAD: {{algo.cliente.ciudad}}
-				DIREECIÓN: {{algo.cliente.direccion}} <br>
-				TELÉFONO: {{algo.cliente.telefono}} <br>
+				Fecha: {{algo.fecha}} <br>
+				Vendedor: {{algo.vendedor.id}} - {{algo.vendedor}}
+				Máquina: {{algo.maquina}}<br>
+				Cliente:{{algo.cliente.apellidoRepresentante}}   
+				Nit: {{algo.cliente}}<br>
+				Ciudad: {{algo.cliente.ciudad}}
+				Dirección: {{algo.cliente.direccion}} <br>
+				Teléfono: {{algo.cliente.telefono}} <br>
 			</p>
 			<hr>
 		{% endfor %}
@@ -49,16 +49,19 @@
 			PROD -- CANT -- VAL/UD -- IVA -- VAL/TOT<br>
 			{% for factura in ventas %}
 				{{factura.producto}} -- {{factura.cantidad}} --
-				{{factura.precio}} -- {{factura.valorIva}} -- {{factura.subtotal}} <br>
+				{{factura.precio}} -- {{factura.valorIva}} -- {{factura.subtotal}}<br>
+			{% endfor %}</p>
+		<hr>
 
-			{% endfor %}
-			<hr>
+		<p align="left">
       {% for algo in datoFactura %}
 				FORMA DE PAGO: {{algo.formaPago}}
-				SUBTOTAL: ${{algo.subtotal}}
+				SUBTOTAL: ${{algo.subtotal}} <br>
 				IVA: ${{algo.iva}}
-				TOTAL: ${{algo.total}}
-			{% endfor %}
-		</p>
+				TOTAL: ${{algo.total}} <br>
+				EFECTIVO: $ {{algo.dineroRecibido}}
+				CAMBIO: $ {{algo.dineroDevuelto}}
+			{% endfor %}</p>
+
 	</body>
 </html>

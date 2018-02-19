@@ -89,6 +89,8 @@ def facturaCrear(request):
                 vendedor = request.user,
                 formaPago = proceso['tipoPago'],
                 maquina = proceso['idMaquina'],
+                dineroRecibido = proceso['efectivo'],
+                dineroDevuelto = proceso['devolver'],
             )
             crearFactura.save()
             print "Factura Guardada"
