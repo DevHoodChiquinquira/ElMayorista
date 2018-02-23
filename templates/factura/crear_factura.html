@@ -2,7 +2,14 @@
 
 {% block system_Contable %}
 
-
+{% if user.is_authenticated %}
+    {% if messages %}{% for message in messages %}
+      <div class="alert alert-warning alert-dismissable">
+      <i class="fa fa-info"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>Alert!</b> {{ message }}
+      </div>
+  {% endfor %}{% endif %}{% endif %}
 
 <div class="form-row">
         <div class="form-group col-md-6 ">
@@ -181,9 +188,6 @@
 <!-- Totales -->
 
 
-
-
-
 <!--Enviar -->
 <form action="/factura/venta" method="post" onsubmit="onEnviar()">
     {% csrf_token %}
@@ -193,13 +197,5 @@
 <!--Fin Enviar -->
 
 
-{% if user.is_authenticated %}
-    {% if messages %}{% for message in messages %}
-      <div class="alert alert-danger alert-dismissable">
-      <i class="fa fa-info"></i>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <b>Alert!</b> {{ message }}
-      </div>
-  {% endfor %}{% endif %}{% endif %}
 
 {%endblock%}

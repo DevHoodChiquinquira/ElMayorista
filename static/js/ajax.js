@@ -152,13 +152,15 @@ $("#p-seleccionar").click(function(){
   proceso.producto.push({'codigo': d[d.length-1].codigo, 'cantidad': d[d.length-1].cantidad, 'valorVenta': d[d.length-1].valorVenta});
   calTotal();
   var efectivo = $("#efectivo").val();
+  var valor = verificar("p-total");
+  vueltas();
   if (proceso.producto.length !=0){
     var htm = ""
     $('#productos').html(htm);
     $("#pcodigo").val('');
     $("#p-seleccionar").attr("disabled", true);
 
-    if (efectivo>0) {
+    if (efectivo>=valor) {
       $("#comprar").attr("disabled", false);
     }
   }
@@ -215,6 +217,7 @@ function calTotal(){
      // formulario que contiene el total o-subtotal
 
      var devolver = efectivo - valor;
+
 
      if (devolver < 0) {
        document.getElementById("devolver").value= "Debe recibir mas o igual al dinero del total de la compra";
