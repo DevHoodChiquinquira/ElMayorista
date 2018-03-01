@@ -31,6 +31,15 @@ class ClienteList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     permission_required = ('cliente.add_cliente')
     model = Cliente
     context_object_name = 'clientes'
+    paginate_by = 5
+    def get_queryset(self, *args, **kwargs):
+        qs = super(ClienteList, self).get_queryset(*args, **kwargs).order_by("-nombreEmpresa")
+        return qs
+        #funcion para paginar una lista
+    def get_context_data(self, **kwargs):
+        context = super(ClienteList, self). get_context_data(**kwargs)
+        context['range'] = range(context["paginator"].num_pages)
+        return context
 
 class ClienteUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     permission_required = ('cliente.change_cliente')

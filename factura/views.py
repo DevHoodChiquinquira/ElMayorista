@@ -122,10 +122,13 @@ def facturaCrear(request):
 
 
 #Busqueda ajax de usuarios
+from django.db.models import Q
 
 def searchCliente(request):
     dni = request.GET.get('dni')
-    dnis= Cliente.objects.filter(dni=dni)#__startswith
+    dnis= Cliente.objects.filter(Q(dni=dni)|Q(nombreEmpresa__icontains=dni)
+        |Q(nombreRepresentante__icontains=dni)
+        |Q(apellidoRepresentante__icontains=dni))#__startswith
     dnis = [cliente_serializer(cliente) for cliente in dnis]
     return HttpResponse(json.dumps(dnis), content_type='application/json')
 
@@ -137,10 +140,12 @@ def cliente_serializer(cliente):
 #productos
 def searchProducto(request):
     codigo = request.GET.get('codigo')
-    codigos = Producto.objects.filter(codigo=codigo)
+    codigos = Producto.objects.filter(Q(codigo=codigo)
+            |Q(producto__icontains=codigo))
     json = serializers.serialize('json', codigos,
                                  fields= ('codigo', 'producto',
-                                 'valorIva', 'valorVenta'))
+                                 'valorIva', 'valorVenta','valorDP',
+                                 'valorDC','valorCC'))
     return HttpResponse(json, content_type='application/json')
 
 class FacturaList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -151,8 +156,8 @@ class FacturaList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     #ordenar de mayor a menor
     def get_queryset(self, *args, **kwargs):
         qs = super(FacturaList, self).get_queryset(*args, **kwargs).order_by("-serie")
-        print qs
-        print qs.first()
+        # print qs
+        # print qs.first()
         return qs
         #funcion para paginar una lista
     def get_context_data(self, **kwargs):

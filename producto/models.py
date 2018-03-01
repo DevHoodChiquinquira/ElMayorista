@@ -19,7 +19,13 @@ class Producto(models.Model):
 	valorIva = models.DecimalField(max_digits=15,
 		decimal_places=2, default=0.00, verbose_name="IVA")
 	valorVenta = models.DecimalField(max_digits=15,
-		decimal_places=2, default=0.00, verbose_name="Valor de venta")
+		decimal_places=2, default=0.00, verbose_name="Valor consumo paquete")
+	valorDP = models.DecimalField(max_digits=15, blank=True, null=True,
+		decimal_places=2, default=0.00, verbose_name="Valor distribuidor paquete")
+	valorDC = models.DecimalField(max_digits=15, blank=True, null=True,
+		decimal_places=2, default=0.00, verbose_name="Valor distribuidor caja")
+	valorCC = models.DecimalField(max_digits=15, blank=True, null=True,
+		decimal_places=2, default=0.00, verbose_name="Valor consumo caja")
 
 	def __unicode__(self):
 		return self.producto

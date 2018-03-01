@@ -46,7 +46,7 @@ $(document).ready(function(){
             html += 'DNI: '+json[i].dni + '<br>';
             html += 'Empresa: '+json[i].nombreEmpresa + '<br>';
             html += 'Nombres: '+json[i].nombreRepresentante + '<br>';
-            html += 'Apellidos: '+json[i].apellidoRepresentante + '<br>';
+            html += 'Apellidos: '+json[i].apellidoRepresentante + '<br><br>';
 
             cliente.dni = json[i].dni;
             cliente.nombreEmpresa = json[i].nombreEmpresa;
@@ -97,10 +97,9 @@ $('#p-buscar').submit(function(e){
       for (var i = 0; i < json.length; i++) {
         html += 'Codigo: '+json[i].fields.codigo + '<br>';
         html += 'Producto: '+json[i].fields.producto + '<br>';
-        html += 'IVA: '+json[i].fields.valorIva + '<br>';
-        html += 'valor Venta: '+json[i].fields.valorVenta + '<br>';
         html += '<label> Valor venta: </label> <input name="p-valorVenta" id="p-valorVenta" type="number" min="1" max="50000000" step="500" value="'+json[i].fields.valorVenta+'" autocomplete="off" required="required"><br>';
         html += '<label> Cantidad: </label> <input name="p-cantidad" id="p-cantidad" type="number" min="1" max="200" step="1" value=1 autocomplete="off" required="required"><br>';
+        html += '<select id="list_precio" onchange="selectPecio();"> <option value="'+json[i].fields.valorVenta+'"> Consumo paquete </option> <option value="'+json[i].fields.valorDP+'"> Distribuidor paquete </option> <option value="'+json[i].fields.valorDC+'"> Distribuidor caja </option><option value="'+json[i].fields.valorCC+'"> Consumo caja </option></select>';
 
         var fila = new Object();
         fila.codigo = json[i].fields.codigo;
@@ -133,6 +132,7 @@ $("#p-seleccionar").click(function(){
   var cell4 = row.insertCell(3);
   var cell5 = row.insertCell(4);
   var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
 
   cell1.innerHTML = d[d.length-1].codigo;
   cell2.innerHTML = d[d.length-1].producto;
@@ -142,6 +142,7 @@ $("#p-seleccionar").click(function(){
   cell4.innerHTML = d[d.length-1].cantidad;
   cell5.innerHTML = (d[d.length-1].valorVenta * d[d.length-1].valorIva) * $('#p-cantidad').val();
   cell6.innerHTML = d[d.length-1].valorVenta  * $('#p-cantidad').val() ;
+  cell7.innerHTML = '<td><input type="button" class="borrar" value="Eliminar" /></td>';
   cell1.setAttribute('align','center');
   cell2.setAttribute('align','center');
   cell3.setAttribute('align','center');
@@ -151,6 +152,7 @@ $("#p-seleccionar").click(function(){
 
   proceso.producto.push({'codigo': d[d.length-1].codigo, 'cantidad': d[d.length-1].cantidad, 'valorVenta': d[d.length-1].valorVenta});
   calTotal();
+  vueltas();
   var efectivo = $("#efectivo").val();
   var valor = verificar("p-total");
   vueltas();
@@ -205,11 +207,23 @@ function calTotal(){
 
 }
 
+function selectPecio(){
+  var selectedValue = document.getElementById("list_precio").value;
+  /*console.log(selectedValue);
+  alert("valor: "+selectedValue);*/
+  document.getElementById("p-valorVenta").value=selectedValue;
+}
 
 
- function vueltas()
+$(document).on('click', '.borrar', function (event) {
+     event.preventDefault();
+     $(this).closest('tr').remove();
+     calTotal();
+     vueltas();
+});
 
- {
+
+ function vueltas() {
      var iva=0.19
      var valor = verificar("p-total");
      var efectivo=verificar("efectivo");
@@ -220,7 +234,7 @@ function calTotal(){
 
 
      if (devolver < 0) {
-       document.getElementById("devolver").value= "Debe recibir mas o igual al dinero del total de la compra";
+       document.getElementById("devolver").value= "Faltan $"+ Math.abs(devolver);
        $('#comprar').attr('disabled',true);
      }
      else {
