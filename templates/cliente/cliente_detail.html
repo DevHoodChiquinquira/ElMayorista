@@ -2,25 +2,27 @@
 
 {% block system_Contable %}
 
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <h4 class="card-title">usuario: {{cliente.dni}}</h4>
-    <h4 class="card-title">Empresa: {{cliente.nombreEmpresa}}</h4>
+<div class="text-center">
+  <h4 class="card-title">ID CLIENTE: {{cliente.dni}}</h4>
+  <h4 class="card-title">EMPRESA: {{cliente.nombreEmpresa}}</h4>
+</div>
+<hr>
 
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Nombres: {{cliente.nombreRepresentante}}</li>
-    <li class="list-group-item">Apellidos:{{cliente.apellidoRepresentante}} </li>
-    <li class="list-group-item">Teléfono: {{cliente.telefono}}</li>
-    <li class="list-group-item">Email: {{cliente.correo}} </li>
-    <li class="list-group-item">Ciudad: {{cliente.ciudad}} </li>
-    <li class="list-group-item">Dirección: {{cliente.direccion}} </li>
-    <li class="list-group-item">Banco: {{cliente.banco}} </li>
-    <li class="list-group-item">Tipo de cuenta: {{cliente.tipoCuenta}} </li>
-    <li class="list-group-item">Numero de cuenta: {{cliente.numeroCuenta}} </li>
-  </ul>
-  <!--<div class="card-body">
-    <button type="button" class="btn btn-dark">Regresar</button>
-  </div>-->
+<div class="form-row">
+        <div class="form-group col-md-4 ">
+          Nombres: {{cliente.nombreRepresentante}} <hr>
+          Apellidos:{{cliente.apellidoRepresentante}}<hr>
+          Teléfono: {{cliente.telefono}}<hr>
+        </div>
+        <div class="form-group col-md-4 ">
+          Email: {{cliente.correo}}<hr>
+          Ciudad: {{cliente.ciudad}}<hr>
+          Dirección: {{cliente.direccion}}<hr>
+        </div>
+        <div class="form-group col-md-4 ">
+          Banco: {{cliente.banco}}<hr>
+          Tipo de cuenta: {{cliente.tipoCuenta}}<hr>
+          Numero de cuenta: {{cliente.numeroCuenta}}<hr>
+        </div>
 </div>
 {%endblock%}

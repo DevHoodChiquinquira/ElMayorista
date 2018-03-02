@@ -46,7 +46,7 @@ $(document).ready(function(){
             html += 'DNI: '+json[i].dni + '<br>';
             html += 'Empresa: '+json[i].nombreEmpresa + '<br>';
             html += 'Nombres: '+json[i].nombreRepresentante + '<br>';
-            html += 'Apellidos: '+json[i].apellidoRepresentante + '<br><br>';
+            html += 'Apellidos: '+json[i].apellidoRepresentante + '<hr>';
 
             cliente.dni = json[i].dni;
             cliente.nombreEmpresa = json[i].nombreEmpresa;
@@ -99,7 +99,7 @@ $('#p-buscar').submit(function(e){
         html += 'Producto: '+json[i].fields.producto + '<br>';
         html += '<label> Valor venta: </label> <input name="p-valorVenta" id="p-valorVenta" type="number" min="1" max="50000000" step="500" value="'+json[i].fields.valorVenta+'" autocomplete="off" required="required"><br>';
         html += '<label> Cantidad: </label> <input name="p-cantidad" id="p-cantidad" type="number" min="1" max="200" step="1" value=1 autocomplete="off" required="required"><br>';
-        html += '<select id="list_precio" onchange="selectPecio();"> <option value="'+json[i].fields.valorVenta+'"> Consumo paquete </option> <option value="'+json[i].fields.valorDP+'"> Distribuidor paquete </option> <option value="'+json[i].fields.valorDC+'"> Distribuidor caja </option><option value="'+json[i].fields.valorCC+'"> Consumo caja </option></select>';
+        html += '<select id="list_precio" onchange="selectPecio();"> <option value="'+json[i].fields.valorVenta+'"> Consumo paquete </option> <option value="'+json[i].fields.valorDP+'"> Distribuidor paquete </option> <option value="'+json[i].fields.valorDC+'"> Distribuidor caja </option><option value="'+json[i].fields.valorCC+'"> Consumo caja </option></select><hr>';
 
         var fila = new Object();
         fila.codigo = json[i].fields.codigo;

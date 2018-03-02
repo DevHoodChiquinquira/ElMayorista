@@ -29,15 +29,15 @@ class ProductoList(LoginRequiredMixin, ListView):
     # login
     model = Producto
     context_object_name = 'productos'
-    paginate_by = 5
-    def get_queryset(self, *args, **kwargs):
-        qs = super(ProductoList, self).get_queryset(*args, **kwargs).order_by("producto")
-        return qs
-        #funcion para paginar una lista
-    def get_context_data(self, **kwargs):
-        context = super(ProductoList, self). get_context_data(**kwargs)
-        context['range'] = range(context["paginator"].num_pages)
-        return context
+    # paginate_by = 5
+    # def get_queryset(self, *args, **kwargs):
+    #     qs = super(ProductoList, self).get_queryset(*args, **kwargs).order_by("producto")
+    #     return qs
+    #     #funcion para paginar una lista
+    # def get_context_data(self, **kwargs):
+    #     context = super(ProductoList, self). get_context_data(**kwargs)
+    #     context['range'] = range(context["paginator"].num_pages)
+    #     return context
 
 class ProductoUpdate(LoginRequiredMixin,
                        PermissionRequiredMixin, UpdateView):

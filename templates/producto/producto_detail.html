@@ -1,15 +1,38 @@
 {% extends "system_index.html" %}
 
 {% block system_Contable %}
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <h4 class="card-title">Codigo: {{producto.codigo}}</h4>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Producto: {{producto.producto}}</li>
-    <li class="list-group-item">Descripción:{{producto.descripcion}} </li>
-    <li class="list-group-item">IVA: {{producto.valorIva}}</li>
-    <li class="list-group-item">Valor Venta: {{producto.valorVenta}} </li>
-  </ul>
+
+<div class="text-center">
+  <h4 class="card-title">Codigo: {{producto.codigo}}</h4>
+  <h4 class="card-title">Producto: {{producto.producto}}</h4>
+
 </div>
+<hr>
+
+<div class="form-row">
+        <div class="form-group col-md-3 ">
+          Descripción: <br>{{producto.descripcion}}<hr>
+
+        </div>
+        <div class="form-group col-md-3 ">
+          IVA Consumo Paquete:<br> ${{producto.valorIva}}<hr>
+
+        </div>
+
+</div>
+<div class="form-row">
+        <div class="form-group col-md-3 ">
+          Valor Venta Consumo Paquete: <br>${{producto.valorVenta}}<hr>
+        </div>
+        <div class="form-group col-md-3 ">
+          Valor Venta Distribuidor Paquete: <br>${{producto.valorDP}}<hr>
+        </div>
+        <div class="form-group col-md-3 ">
+          Valor Venta Distribuidor Caja: <br>${{producto.valorDC}}<hr>
+        </div>
+        <div class="form-group col-md-3 ">
+          Valor Venta Consumo caja: <br>${{producto.valorVenta}}<hr>
+        </div>
+</div>
+
 {%endblock%}
